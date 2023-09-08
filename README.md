@@ -20,4 +20,6 @@ The design patters in based off of the conventional MVC pattern where the dao ex
 
 I have a separate service layer for the XML parsing as this will be a core functionality with this application which relies on XML files as the data source before they are parsed and written to the DB. This allows for future changes for the business when it comes to which data to use and not use from these XML files. There is also an idea to have this in a separate utils package as this is quite a generic job that could be shared...
 
+I have also left the POST endpoint for setTrades exposed for future implementation where there is a client side application which can POST over new XML files which is more relaisitic than having them stored in the server side repo.
+
 
