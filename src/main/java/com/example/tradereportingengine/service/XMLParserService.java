@@ -1,8 +1,6 @@
 package com.example.tradereportingengine.service;
 
 import com.example.tradereportingengine.model.Trade;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -15,8 +13,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class XMLParserService {
     public List<Trade> parseXMLTrades(){
@@ -33,28 +30,26 @@ public class XMLParserService {
                 String amountValue = "";
                 Document document = builder.parse(child);
                 document.getDocumentElement().normalize();
-                NodeList bpRef = document.getElementsByTagName("buyerPartyReference");
-                NodeList spRef = document.getElementsByTagName("sellerPartyReference");
-                NodeList currency = document.getElementsByTagName("currency");
-                NodeList amount = document.getElementsByTagName("amount");
+                List<String> tags = Arrays.asList("buyerPartyReference", "sellerPartyReference", "currency", "amount");
+                Map<String, NodeList> tagsMap = getElementsbyTag(tags, document);
 
-                if (bpRef.item(0).getNodeType() == Node.ELEMENT_NODE) {
-                    Element buyerPartyReference = (Element) bpRef.item(0);
+                if (tagsMap.get("buyerPartyReference").item(0).getNodeType() == Node.ELEMENT_NODE) {
+                    Element buyerPartyReference = (Element) tagsMap.get("buyerPartyReference").item(0);
                     bpRefValue = buyerPartyReference.getAttribute("href");
 
                 }
-                if (spRef.item(0).getNodeType() == Node.ELEMENT_NODE) {
-                    Element sellerPartyReference = (Element) spRef.item(0);
+                if (tagsMap.get("sellerPartyReference").item(0).getNodeType() == Node.ELEMENT_NODE) {
+                    Element sellerPartyReference = (Element) tagsMap.get("sellerPartyReference").item(0);
                     spRefValue = sellerPartyReference.getAttribute("href");
 
                 }
-                if (currency.item(0).getNodeType() == Node.ELEMENT_NODE) {
-                    Element curr = (Element) currency.item(0);
+                if (tagsMap.get("currency").item(0).getNodeType() == Node.ELEMENT_NODE) {
+                    Element curr = (Element) tagsMap.get("currency").item(0);
                     currencyValue = curr.getFirstChild().getTextContent();
 
                 }
-                if (amount.item(0).getNodeType() == Node.ELEMENT_NODE) {
-                    Element am = (Element) amount.item(0);
+                if (tagsMap.get("amount").item(0).getNodeType() == Node.ELEMENT_NODE) {
+                    Element am = (Element) tagsMap.get("amount").item(0);
                     amountValue = am.getFirstChild().getTextContent();
 
                 }
@@ -67,5 +62,13 @@ public class XMLParserService {
         }
         return tradeList;
 
+    }
+
+    public Map<String, NodeList> getElementsbyTag(List<String> tags, Document doc){
+        Map<String, NodeList> elementMap = new HashMap<>();
+        for(String tag: tags){
+            elementMap.put(tag, doc.getElementsByTagName(tag));
+        }
+        return elementMap;
     }
 }
