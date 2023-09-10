@@ -1,5 +1,6 @@
 package com.example.tradereportingengine.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -13,16 +14,16 @@ public class Trade {
     @Id
     @GeneratedValue
     private int id;
-    private String buyerParty;
-    private String sellerParty;
-    private String premiumAmount;
-    private String premiumCurrency;
+    private String BUYERPARTY;
+    private String SELLERPARTY;
+    private String PREMIUMAMOUNT;
+    private String PREMIUMCURRENCY;
 
 
     public Trade(String bpRefValue, String spRefValue, String currencyValue, String amountValue) {
-        buyerParty = bpRefValue;
-        sellerParty = spRefValue;
-        premiumCurrency = currencyValue;
-        premiumAmount = amountValue;
+        this.BUYERPARTY = bpRefValue;
+        this.SELLERPARTY = spRefValue;
+        this.PREMIUMCURRENCY = currencyValue;
+        this.PREMIUMAMOUNT = amountValue;
     }
 }

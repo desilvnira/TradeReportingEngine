@@ -26,17 +26,6 @@ public class TradeReportingService {
     }
 
     public List<Trade> getfilteredTrades(){
-        List<Trade> trades = tradeRepository.findAll();
-        List<Trade> filteredTrades = new ArrayList<>();
-        for(Trade trade: trades){
-            if(!trade.getBuyerParty().equals(trade.getSellerParty())) {
-                if (trade.getSellerParty().equals("EMU_BANK") && trade.getPremiumCurrency().equals("AUD")) {
-                    filteredTrades.add(trade);
-                } else if (trade.getSellerParty().equals("BISON_BANK") && trade.getPremiumCurrency().equals("USD")) {
-                    filteredTrades.add(trade);
-                }
-            }
-        }
-        return filteredTrades;
+        return tradeRepository.findFilteredTrades();
     }
 }

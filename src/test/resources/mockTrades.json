@@ -1,37 +1,37 @@
 [
   {
     "id": 1,
-    "buyerParty": "LEFT_BANK",
-    "sellerParty": "EMU_BANK",
-    "premiumAmount": "100.00",
-    "premiumCurrency": "AUD"
+    "sellerparty": "EMU_BANK",
+    "buyerparty": "LEFT_BANK",
+    "premiumamount": "100.00",
+    "premiumcurrency": "AUD"
   },
   {
     "id": 2,
-    "buyerParty": "LEFT_BANK",
-    "sellerParty": "EMU_BANK",
-    "premiumAmount": "200.00",
-    "premiumCurrency": "AUD"
+    "sellerparty": "EMU_BANK",
+    "buyerparty": "LEFT_BANK",
+    "premiumamount": "200.00",
+    "premiumcurrency": "AUD"
   },
   {
     "id": 5,
-    "buyerParty": "KANMU_EB",
-    "sellerParty": "EMU_BANK",
-    "premiumAmount": "300.00",
-    "premiumCurrency": "AUD"
+    "sellerparty": "EMU_BANK",
+    "buyerparty": "KANMU_EB",
+    "premiumamount": "300.00",
+    "premiumcurrency": "AUD"
   },
   {
     "id": 6,
-    "buyerParty": "EMU_BANK",
-    "sellerParty": "BISON_BANK",
-    "premiumAmount": "500.00",
-    "premiumCurrency": "USD"
+    "sellerparty": "BISON_BANK",
+    "buyerparty": "EMU_BANK",
+    "premiumamount": "500.00",
+    "premiumcurrency": "USD"
   },
   {
     "id": 8,
-    "buyerParty": "EMU_BANK",
-    "sellerParty": "BISON_BANK",
-    "premiumAmount": "600.00",
-    "premiumCurrency": "USD"
+    "sellerparty": "BISON_BANK",
+    "buyerparty": "EMU_BANK",
+    "premiumamount": "600.00",
+    "premiumcurrency": "USD"
   }
 ]
