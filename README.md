@@ -22,4 +22,6 @@ I have a separate service layer for the XML parsing as this will be a core funct
 
 I have also left the POST endpoint for setTrades exposed for future implementation where there is a client side application which can POST over new XML files which is more relaisitic than having them stored in the server side repo.
 
+The logic about what trades to return are handled at the dao layer through native queries as the JPA repository has very basic CRUD functions. I also dont want to use the popular findAll() function on the DB before running business logic as this may not be a scalable solution in the long run with the increase in data. So the logic has been abstracted to the dao where any custom queries can reside depending on the business needs.
+
 
