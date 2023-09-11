@@ -24,4 +24,6 @@ I have also left the POST endpoint for setTrades exposed for future implementati
 
 The logic about what trades to return are handled at the dao layer through native queries as the JPA repository has very basic CRUD functions. I also dont want to use the popular findAll() function on the DB before running business logic as this may not be a scalable solution in the long run with the increase in data. So the logic has been abstracted to the dao where any custom queries can reside depending on the business needs.
 
+Final small assumption is the buyer party and seller party not being anagrams. I only saw an instance of the banks being equal rather than anagrams, so I made check to see if they were equals within the native query. I could instead abstract that part to the service layer and write a function which checks for actual anagrams (using character array sort) but the sample data did not provide any anagrams between bank names so I decided to keep it simple.
+
 
